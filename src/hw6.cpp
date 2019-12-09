@@ -100,7 +100,7 @@ int main() {
 		}
 
 		if(e.target->ta() > 0) {
-			e.target->set_internal(new Event(INT, e.time.advance(e.target->ta()), e.target));
+			e.target->set_internal(Event(INT, e.time.advance(e.target->ta()), e.target));
 			pqueue->push_back(*e.target->get_internal());
 			make_heap(pqueue->begin(), pqueue->end(), Event::compare);
 		}

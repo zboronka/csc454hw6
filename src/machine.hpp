@@ -12,15 +12,16 @@ class Machine: public devsim::MooreMachine {
 		long long s = 0;
 		long long t = 0;
 	public:
-		devsim::Port<int>* input = nullptr;
-		devsim::Port<int>* output = nullptr;
+		devsim::Port<int>* input;
+		devsim::Port<int>* output;
 
-		Machine(long long t, int priority) : t(t), 
-		                                     input(new devsim::Port<int>()),
-		                                     output(new devsim::Port<int>()) { this->set_priority(priority); }
+		Machine(long long t, int priority) :
+			t(t), 
+			input(new devsim::Port<int>()),
+			output(new devsim::Port<int>()) { this->set_priority(priority); }
+		Machine(const Machine&);
 		~Machine() { delete input; delete output; }
-		Machine(const Machine& other);
-		Machine& operator=(const Machine& other);
+		Machine& operator=(const Machine&);
 
 		long long ta() { return p > 0 ? s : -1; }
 
